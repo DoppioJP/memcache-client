@@ -368,7 +368,7 @@ class MemCache
       logger.debug { "set #{key} to #{server.inspect}: #{value.to_s.bytesize}" } if logger
 
       if @check_size && value.to_s.bytesize > ONE_MB
-        raise MemCacheError, "Value too large, memcached can only store 1MB of data per key"
+        raise MemCacheError, "Value in key '#{cache_key}' too large, memcached can only store 1MB of data per key"
       end
 
       with_socket_management(server) do |socket|
